@@ -3,7 +3,7 @@ package datastructure;
 import exceptions.StackUnderflowException;
 
 public class Stack<T> {
-  private StackNode<T> head;
+  private Node<T> head;
 
   public Stack() {
     this.head = null;
@@ -14,7 +14,7 @@ public class Stack<T> {
   }
 
   public void Push(T data) {
-    StackNode<T> newnode = new StackNode<T>(data);
+    Node<T> newnode = new Node<T>(data);
     newnode.SetNext(this.head);
     this.head = newnode;
   }
