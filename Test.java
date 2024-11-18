@@ -3,11 +3,12 @@ public class Test {
     System.out.println("Hello, world.");
 
     Stack<Integer> intStack = new Stack<Integer>();
-    intStack.Push(1);
-    intStack.Push(3);
-    intStack.Push(2);
+    
+    for (int i = 0; i < 10; i++) {
+      intStack.Push(i);
+    }
 
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < 10; i++) {
       System.out.println(intStack.Pop());
     }
   }

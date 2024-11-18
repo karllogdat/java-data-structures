@@ -5,6 +5,10 @@ public class Stack<T> {
     this.head = null;
   }
 
+  public boolean IsEmpty() {
+    return head == null;
+  }
+
   public void Push(T data) {
     StackNode<T> newnode = new StackNode<T>(data);
     newnode.SetNext(this.head);
@@ -12,14 +16,17 @@ public class Stack<T> {
   }
 
   public T Pop() {
-    if (this.head == null) {
-      System.out.println("Stack Underflow Exception: Trying to pop from empty stack.");
-      return null;
+    if (this.IsEmpty()) {
+      throw new Error("Stack underflow exception: Trying to pop from empty stack.");
     }
 
     T value = this.head.GetData();
     this.head = this.head.GetNext();
 
     return value;
+  }
+
+  public T Peek() {
+    return this.head.GetData();
   }
 }
