@@ -1,22 +1,20 @@
-import datastructure.Stack;
+import datastructure.Queue;
 
 public class Test {
   public static void main(String[] args) {
-    System.out.println("Hello, world.");
+    Queue<Integer> queue = new Queue<Integer>();
 
-    Stack<Integer> intStack = new Stack<Integer>();
-    
     for (int i = 0; i < 10; i++) {
-      intStack.Push(i);
+      queue.Enqueue(i);
     }
 
-    try {
-      for (int i = 0; i < 11; i++) {
-        System.out.println(intStack.Pop());
-      }
-    } catch (Exception e) {
+    for (int i = 0; i < 11; i++) {
+      try {
+        System.out.println(queue.Dequeue());
+      } 
+      catch (Exception e) {
         System.err.println(e.getMessage());
-      return;
+      }
     }
   }
 }
