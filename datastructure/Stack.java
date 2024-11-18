@@ -1,5 +1,7 @@
 package datastructure;
 
+import exceptions.StackUnderflowException;
+
 public class Stack<T> {
   private StackNode<T> head;
 
@@ -17,9 +19,9 @@ public class Stack<T> {
     this.head = newnode;
   }
 
-  public T Pop() {
+  public T Pop() throws StackUnderflowException {
     if (this.IsEmpty()) {
-      throw new Error("Stack underflow exception: Trying to pop from empty stack.");
+      throw new StackUnderflowException("Stack underflow exception: Trying to pop from empty stack.");
     }
 
     T value = this.head.GetData();

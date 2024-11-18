@@ -10,8 +10,13 @@ public class Test {
       intStack.Push(i);
     }
 
-    for (int i = 0; i < 10; i++) {
-      System.out.println(intStack.Pop());
+    try {
+      for (int i = 0; i < 11; i++) {
+        System.out.println(intStack.Pop());
+      }
+    } catch (Exception e) {
+        System.err.println(e.getMessage());
+      return;
     }
   }
 }
