@@ -19,9 +19,9 @@ public class Stack<T> {
     this.head = newnode;
   }
 
-  public T Pop() throws StackUnderflowException {
+  public T Pop() {
     if (this.IsEmpty()) {
-      throw new StackUnderflowException("Stack underflow exception: Trying to pop from empty stack.");
+      throw new StackUnderflowException("Trying to pop from empty stack.");
     }
 
     T value = this.head.GetData();

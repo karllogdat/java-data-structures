@@ -48,6 +48,6 @@ public class BinarySearchTree<T extends Comparable<T>> extends BinaryTree<T> {
 
     @Override
     public void Delete(T value) {
-
+        // implement predecessor and successor functions before doing this
     }
 }

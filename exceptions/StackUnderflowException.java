@@ -1,7 +1,7 @@
 package exceptions;
 
-public class StackUnderflowException extends Exception {
+public class StackUnderflowException extends RuntimeException {
     public StackUnderflowException(String message) {
-        super(message);
+        super("Stack Underflow Exception: "+ message);
     }
 }
