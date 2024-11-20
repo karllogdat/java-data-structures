@@ -12,9 +12,10 @@ public abstract class BinaryTree<T> {
     // another starts at a user defined starting point
     public void InOrderTraversal() {
         InOrderTraversal(root);
+        System.out.println();
     }
 
-    public void InOrderTraversal(BinaryTreeNode<T> node) {
+    private void InOrderTraversal(BinaryTreeNode<T> node) {
         if (node != null) {
             InOrderTraversal(node.GetLeft());
             System.out.print(node.GetData() + " ");
@@ -26,7 +27,7 @@ public abstract class BinaryTree<T> {
         PreOrderTraversal(root);
     }
 
-    public void PreOrderTraversal(BinaryTreeNode<T> node) {
+    private void PreOrderTraversal(BinaryTreeNode<T> node) {
         if (node != null) {
             System.out.print(node.GetData() + " ");
             PreOrderTraversal(node.GetLeft());
@@ -38,7 +39,7 @@ public abstract class BinaryTree<T> {
         PostOrderTraversal(root);
     }
 
-    public void PostOrderTraversal(BinaryTreeNode<T> node) {
+    private void PostOrderTraversal(BinaryTreeNode<T> node) {
         if (node != null) {
             PreOrderTraversal(node.GetLeft());
             PreOrderTraversal(node.GetRight());
