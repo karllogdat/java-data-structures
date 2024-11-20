@@ -2,26 +2,27 @@ import datastructure.*;
 
 public class Test {
   public static void main(String[] args) {
-    BinarySearchTree<Integer> int_bst = new BinarySearchTree<>();
+    LinkedList<Integer> llInt = new LinkedList<>();
 
-    int_bst.Insert(10);
-    int_bst.Insert(5);
-    int_bst.Insert(15);
-    int_bst.Insert(7);
+    llInt.insertAtHead(1);
+    llInt.insertAtTail(10);
+    llInt.insert(1, 2);
 
-    int_bst.InOrderTraversal();
+    for (int i = 0; i < llInt.size(); i++) {
+      System.out.println(llInt.get(i));
+    }
 
-    int_bst.Delete(10);
-    int_bst.Insert(4);
-    int_bst.Insert(12);
-    int_bst.Insert(20);
-
-    int_bst.InOrderTraversal();
-
-    int_bst.Delete(7);
-    int_bst.InOrderTraversal();
-
-    int_bst.Delete(4);
-    int_bst.InOrderTraversal();
+    llInt.delete(1);
+    for (int i = 0; i < llInt.size(); i++) {
+      System.out.println(llInt.get(i));
+    }
+    llInt.deleteTail();
+    for (int i = 0; i < llInt.size(); i++) {
+      System.out.println(llInt.get(i));
+    }
+    llInt.deleteHead();
+    for (int i = 0; i < llInt.size(); i++) {
+      System.out.println(llInt.get(i));
+    }
   }
 }
