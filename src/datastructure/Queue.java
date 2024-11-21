@@ -1,8 +1,11 @@
 package datastructure;
 
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+
 import exceptions.QueueUnderflowException;
 
-public class Queue<T> {
+public class Queue<T> implements Iterable<T> {
     private Node<T> front;
     private Node<T> back;
 
@@ -47,5 +50,36 @@ public class Queue<T> {
         }
 
         return front.GetData();
+    }
+
+    public boolean isEmpty() {
+        return (front == null && back == null);
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return new QueueIterator();
+    }
+
+    private class QueueIterator implements Iterator<T> {
+        private Node<T> current = front;
+
+        @Override
+        public boolean hasNext() {
+            return current != null;
+        }
+
+        @Override
+        public T next() {
+            // could probably implement a custom exception idk
+            if (!hasNext()) {
+                throw new NoSuchElementException("No more elements.");
+            }
+
+            T data = current.data;
+            current = current.next;
+
+            return data;
+        }
     }
 }

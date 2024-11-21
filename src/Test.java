@@ -2,27 +2,22 @@ import datastructure.*;
 
 public class Test {
   public static void main(String[] args) {
-    LinkedList<Integer> llInt = new LinkedList<>();
+    Queue<Integer> q = new Queue<>();
 
-    llInt.insertAtHead(1);
-    llInt.insertAtTail(10);
-    llInt.insert(1, 2);
+    q.Enqueue(1);
+    q.Enqueue(3);
+    q.Enqueue(4);
 
-    for (int i = 0; i < llInt.size(); i++) {
-      System.out.println(llInt.get(i));
+    System.out.println("Iterated elements: ");
+    for (int number : q) {
+      System.out.println("In queue: " + number);
     }
 
-    llInt.delete(1);
-    for (int i = 0; i < llInt.size(); i++) {
-      System.out.println(llInt.get(i));
+    System.out.println("Dequeued elements: ");
+    while (!q.isEmpty()) {
+      System.out.println(q.Dequeue());
     }
-    llInt.deleteTail();
-    for (int i = 0; i < llInt.size(); i++) {
-      System.out.println(llInt.get(i));
-    }
-    llInt.deleteHead();
-    for (int i = 0; i < llInt.size(); i++) {
-      System.out.println(llInt.get(i));
-    }
+
+    System.out.println("Hi world");
   }
 }
