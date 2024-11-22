@@ -1,23 +1,57 @@
+import java.util.HashMap;
+import java.util.Map;
+
 import datastructure.*;
 
 public class Test {
+  public static boolean isInt(String s) {
+    try {
+      Integer.parseInt(s);
+      return true;
+    } catch (NumberFormatException e) {
+      return false;
+    }
+  }
   public static void main(String[] args) {
-    Queue<Integer> q = new Queue<>();
+    Map<String, Integer> precedence = new HashMap<>();
+    precedence.put("+", 1);
+    precedence.put("-", 1);
+    precedence.put("*", 2);
+    precedence.put("/", 2);
+    precedence.put("^", 3);
 
-    q.Enqueue(1);
-    q.Enqueue(3);
-    q.Enqueue(4);
+    Stack<String> stk = new Stack<>();
+    Queue<String> out = new Queue<>();
 
-    System.out.println("Iterated elements: ");
-    for (int number : q) {
-      System.out.println("In queue: " + number);
+    String infix = "( 1 + 2 ) * 3 - 4 / 5";
+    String[] infixStrings = infix.split(" ");
+
+    for (String token : infixStrings) {
+      if (isInt(token)) {
+        out.Enqueue(token);
+      } else if (token == "(") {
+        stk.push(token);
+      } else if (token == ")") {
+        while (!stk.isEmpty() && stk.peek() != "(") {
+          out.Enqueue(stk.pop());
+        }
+        stk.pop();
+      } else {
+        while (!stk.isEmpty() && stk.peek() != "(" && precedence.get(stk.peek()) >= precedence.get(token)) {
+          out.Enqueue(stk.pop());
+        }
+        stk.push(token);
+      }
     }
 
-    System.out.println("Dequeued elements: ");
-    while (!q.isEmpty()) {
-      System.out.println(q.Dequeue());
+    while (!stk.isEmpty()) {
+      out.Enqueue(stk.pop());
     }
 
-    System.out.println("Hi world");
+    for (String token : out) {
+      System.out.print(token);
+    }
+
+    System.out.println("\nDone.");
   }
 }
